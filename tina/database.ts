@@ -22,6 +22,7 @@ function varsubst(s?: string) {
 }
 
 const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
+const dbName = process.env.MONGO_INITDB_DATABASE as string;
 
 const branch =
   process.env.GITHUB_BRANCH ||
@@ -40,7 +41,7 @@ export default isLocal
       }),
       databaseAdapter: new MongodbLevel<string, Record<string, unknown>>({
         collectionName: branch,
-        dbName: "tinacms-self-host",
+        dbName,
         mongoUri: varsubst(process.env.MONGODB_URI) as string,
       }),
     });

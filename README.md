@@ -50,13 +50,13 @@ When using vercel functions, your backend function is location at `/api/tina/bac
 To install the Vercel CLI, run:
 
 ```
-yarn global add vercel
+DO NOT DO THIS: yarn global add vercel
 ```
 
 To run the app locally:
 
 ```
-vercel dev
+DO THIS: npx vercel dev
 ```
 
 This will start the Vercel function and run the app locally.
