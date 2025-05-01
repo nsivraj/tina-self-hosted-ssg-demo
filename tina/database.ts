@@ -5,6 +5,22 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+function varsubst(s?: string) {
+  // const myVariable = "world";
+  // const myString = "Hello, ${myVariable}!";
+  const replacedString = s?.replace(/\${([^}]+)}/g, (_, variableName) => {
+    // return eval(variableName);
+    // console.log("The variableName is: " + variableName);
+    return process.env[variableName] ? process.env[variableName] : "";
+  });
+
+  // console.log("The replaced string is: " + replacedString); // Output: Hello, world!
+  // return s.replace(/\$\{(.*?)\}/g, function (m, p) {
+  //   return process.env[p];
+  // });
+  return replacedString;
+}
+
 const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
 
 const branch =
@@ -25,6 +41,6 @@ export default isLocal
       databaseAdapter: new MongodbLevel<string, Record<string, unknown>>({
         collectionName: branch,
         dbName: "tinacms-self-host",
-        mongoUri: process.env.MONGODB_URI!,
+        mongoUri: varsubst(process.env.MONGODB_URI) as string,
       }),
     });

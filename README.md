@@ -68,13 +68,13 @@ When using netlify functions, your backend function is location at `netlify/func
 To install the Netlify CLI, run:
 
 ```
-yarn global add netlify-cli
+DO NOT DO THIS: yarn global add netlify-cli
 ```
 
 To run the app locally:
 
 ```
-netlify dev
+DO THIS: npx netlify dev
 ```
 
 ## Testing auth locally

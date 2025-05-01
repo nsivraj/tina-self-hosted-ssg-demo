@@ -1,5 +1,5 @@
 {
-  "devCommand": "yarn dev",
+  "devCommand": "yarn dev:prod",
   "rewrites": [
     {
       "source": "/api/tina/:path*",

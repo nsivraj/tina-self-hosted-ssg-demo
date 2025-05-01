@@ -8,5 +8,5 @@
   force = true
 
 [dev]
-  command = "yarn run dev"
+  command = "yarn run dev:prod"
   publish = "_site"
